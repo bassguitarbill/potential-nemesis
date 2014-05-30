@@ -29,6 +29,7 @@ var draw = setInterval(function(){
 	lastFrame = new Date();
 	bgDraw(ctx);
 	fgDraw(ctx);
+	drawScore(ctx,Math.floor((new Date() - time)/40));
 },1000/60);
 
 var updateFps = setInterval(function(){
