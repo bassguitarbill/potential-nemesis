@@ -10,7 +10,12 @@ bg.push(bgImage);
 
 var fgImage = new Image();
 fgImage.src = "images/man.png";
-fg.push(fgImage);
+fgImage.getImage = function(time){
+	return this;
+}
+//fg.push(fgImage);
+//
+fg.push(bird);
 
 function bgDraw(ctx){
 	bg.forEach(function(image,b,c){
@@ -20,7 +25,7 @@ function bgDraw(ctx){
 
 function fgDraw(ctx){
 	fg.forEach(function(image){
-		ctx.drawImage(image,(new Date() - time) / 20,0);
+		ctx.drawImage(image.getImage(new Date()),(new Date() - time) / 20,0);
 	});
 }
 
