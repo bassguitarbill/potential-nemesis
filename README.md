@@ -7,3 +7,5 @@ I want this to be able to draw
 * backgrounds, layered, with different levels of parallax
 * midgrounds (not a word?) where things can move and collide
 * foregrounds, also with parallax, or perhaps the fabled reverse parallax
+
+The name **Potential Nemesis** was chosen randomly by Github's name generator. I thought it was cool so I went with it.
