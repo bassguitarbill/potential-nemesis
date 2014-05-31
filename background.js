@@ -15,7 +15,7 @@ fgImage.getImage = function(time){
 }
 //fg.push(fgImage);
 //
-fg.push(bird);
+//fg.push(bird);
 
 function bgDraw(ctx){
 	bg.forEach(function(image,b,c){
@@ -30,12 +30,13 @@ function fgDraw(ctx){
 	});
 }
 
+var sc = 0;
 var draw = setInterval(function(){
 	fps = (Math.round(1000/(new Date() - lastFrame)) + " FPS");
 	lastFrame = new Date();
 	bgDraw(ctx);
 	fgDraw(ctx);
-	drawScore(ctx,Math.floor((new Date() - time)/40));
+	drawScore(ctx,sc);
 },1000/60);
 
 var updateFps = setInterval(function(){

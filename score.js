@@ -1,5 +1,5 @@
 function drawScore(ctx, score){
-	var x = Math.floor(Math.log(score) / Math.log(10));
+/*	var x = Math.floor(Math.log(score) / Math.log(10));
 	x = ctx.canvas.width - (20*(x+1));
 	var y =  60;
 
@@ -10,4 +10,8 @@ function drawScore(ctx, score){
 
 	ctx.strokeStyle = "black";
 	ctx.strokeText(score, x, y);
+*/
+	for(var i=0; i<score.toString().length; i++){
+		drawNum(ctx,i*40,0,parseInt(score.toString()[i]));
+	}
 }
