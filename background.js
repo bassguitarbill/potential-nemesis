@@ -8,15 +8,6 @@ var bgImage = new Image();
 bgImage.src = "images/bg3.png";
 bg.push(bgImage);
 
-var fgImage = new Image();
-fgImage.src = "images/man.png";
-fgImage.getImage = function(time){
-	return this;
-}
-//fg.push(fgImage);
-//
-//fg.push(bird);
-
 function bgDraw(ctx){
 	bg.forEach(function(image,b,c){
 		ctx.drawImage(image,0,0,image.width,image.height,0,0,ctx.canvas.width,ctx.canvas.height);
@@ -25,8 +16,7 @@ function bgDraw(ctx){
 
 function fgDraw(ctx){
 	fg.forEach(function(sprite){
-		//ctx.drawImage(image.getImage(new Date()),(new Date() - time) / 20,0);
-		sprite.draw(300,300,((new Date() - time) % 400) < 200 ? 0 : 1);
+		sprite.draw(sprite.x,sprite.y);
 	});
 }
 
