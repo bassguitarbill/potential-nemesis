@@ -5,7 +5,7 @@ var lastFrame = new Date();
 var fps = 0;
 
 var bgImage = new Image();
-bgImage.src = "images/bg.png";
+bgImage.src = "images/bg3.png";
 bg.push(bgImage);
 
 var fgImage = new Image();
@@ -24,8 +24,9 @@ function bgDraw(ctx){
 }
 
 function fgDraw(ctx){
-	fg.forEach(function(image){
-		ctx.drawImage(image.getImage(new Date()),(new Date() - time) / 20,0);
+	fg.forEach(function(sprite){
+		//ctx.drawImage(image.getImage(new Date()),(new Date() - time) / 20,0);
+		sprite.draw(300,300,((new Date() - time) % 400) < 200 ? 0 : 1);
 	});
 }
 

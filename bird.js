@@ -1,21 +1,7 @@
-var period = 400;
-var duty = .5;
+var bird = new Sprite(ctx);
 
-var birdDown =new Image();
-birdDown.src = "images/birds_down_big.png";
+bird.image[0] = new Image();
+bird.image[0].src = "images/birds_down_big.png";
 
-var birdUp = new Image();
-birdUp.src = "images/birds_up_big.png";
-
-var bird = new Image();
-
-bird.getImage = function(time){
-
-	if((time % period) < (duty * period)){
-		return birdDown;
-	} else {
-		return birdUp;
-	}
-
-}
-	
+bird.image[1] = new Image();
+bird.image[1].src = "images/birds_up_big.png";
