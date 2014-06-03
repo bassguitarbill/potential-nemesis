@@ -1,54 +1,27 @@
-var cont = function(left,top,right,down,c){
+var compare = function(low,high,x){
 	console.log(arguments);
-	console.log(c);
-	if(c.y < top){
-		if(c.x < left) {
-			return 1;
-		} else if (c.x < right) {
-			return 2;
-		} else {
-			return 3;
-		}
-	} else if(c.y < down) {
-		if(c.x < left) {
-			return 4;
-		} else if (c.x < right) {
-			return 5;
-		} else {
-			return 6;
-		}
-	} else {
-		if(c.x < left) {
-			return 7;
-		} else if (c.x < right) {
-			return 8;
-		} else {
-			return 9;
-		}
-	}
+	if(x < low) return -1
+	if(x > high) return 1
+	return 0
 }
 
-var collide = function(aLeft,aUp,aRight,aDown,bLeft,bUp,bRight,bDown){
-	var c = cont(aLeft,aUp,aRight,aDown,{x:bLeft,y:bUp});
-	console.log(c);
-
-	if (c == 5) {
-		return true;
-	}
-
-	if([3,6,7,8,9].indexOf(c) != -1){
-		return false;
-	}
-
-	if(c == 2){
-		console.log(cont(aLeft,aUp,aRight,aDown,{x:bLeft,y:bDown})); 
-		return cont(aLeft,aUp,aRight,aDown,{x:bLeft,y:bDown}) != 2;
-	}
-
-	if(c == 4){
-		console.log(cont(aLeft,aUp,aRight,aDown,{x:bRight,y:bUp}));
-		return cont(aLeft,aUp,aRight,aDown,{x:bRight,y:bUp}) != 4;
-	}
-	console.log(cont(aLeft,aUp,aRight,aDown,{x:bRight,y:bDown}));
-	return ([5,6,8,9].indexOf(cont(aLeft,aUp,aRight,aDown,{x:bRight,y:bDown})) != -1);
+var cont = function(x,y,w,h,c){
+	console.log(arguments);
+	return {x:compare(x,x+w,c.x),y:compare(y,y+h,c.y)}
 }
+
+var collide = function(ax, ay, aw, ah, bx, by, bw, bh){
+	var c = cont(ax,ay,aw,ah,{x:bx,y:by})
+	console.log(c)	
+	if(c.x == 1 || c.y == 1)
+		return false
+	if(c.x + c.y == 0)
+		return true
+	if(c.x == 0)
+		return cont(ax,ay,ah,aw,{x:bx,y:by+bh}).y != -1
+   	if(c.y == 0)
+		return cont(ax,ay,ah,aw,{x:bx+bw,y:by}).x != -1
+	c = cont(ax,ay,ah,aw,{x:bx+bw,y:by+bh})
+	return c.x != -1 && c.y != -1
+}
+	
